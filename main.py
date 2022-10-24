@@ -13,10 +13,13 @@ class ExamsGenerator():
         with open('config.json', 'r') as f:
             self.config = json.load(f)
         self.df = pd.read_excel(f"{self.config['source_file']}.{self.config['source_extension']}")
+        self.show_params()
+
+
+    def init_document(self):
         self.doc = Document()
         if self.config['export_solutions']:
             self.doc_solutions = Document()
-        self.show_params()
 
 
     def show_params(self):
@@ -112,6 +115,7 @@ class ExamsGenerator():
             
     def start(self) -> None:
         for i in range (0, self.config["exams_number"]):
+            self.init_document()
             self.set_document(self.doc)
             if self.config['export_solutions']:
                 self.set_document(self.doc_solutions)
