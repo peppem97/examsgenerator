@@ -9,14 +9,14 @@ class ExamsGenerator():
         self.show_params()
 
 
-    def show_params(self):
+    def show_params(self) -> None:
         print("********************")
         print(f"Materia: {self.config['subject']}")
         print(f"Classe: {self.config['classroom']}")
         print("********************")
             
             
-    def check_row(self, row) -> None:
+    def check_row(self, row) -> bool:
         if self.config['deep_filtering']:
             return (
                 row[self.config['subject_denomination']] == self.config['subject'] and 

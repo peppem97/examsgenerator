@@ -2,7 +2,7 @@ from docx import Document
 from utility import *
 import random
 
-class Exam():
+class Exam:
     def __init__(self, config, all_questions) -> None:
         self.config = config
         self.questions = all_questions
@@ -12,7 +12,7 @@ class Exam():
         set_document(self.doc_solutions, self.config['title'], self.config['heading'])
 
 
-    def shuffle_questions(self):
+    def shuffle_questions(self) -> None:
         if self.config['shuffle_questions']:
             random.shuffle(self.questions)
         if self.config['shuffle_options']:
